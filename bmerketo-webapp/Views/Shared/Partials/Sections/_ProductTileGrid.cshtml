@@ -1,0 +1,38 @@
+﻿@model ProductTileGridViewModel
+@if(Model.GridItems.Any())
+{
+    <section class="bg">
+    <div class="container-xxl">
+        <div class="mt-5 row row-cols-md-1 row-cols-lg-2 row-cols-xl-3 g-4">
+            @if (@Model.GridItems.ElementAt(0) != null)
+            {
+                <partial name="../Components/_ProductTileXl.cshtml" model="@Model.GridItems.ElementAt(0)" />
+            }
+           
+            <div class="col d-flex justify-content-center mb-4">
+                <div class="card sale-card-body d-flex justify-content-center">
+                    @if (Model.Title1 != null) { <p class="sell-card-text-1">@Model.Title1</p> }
+                    @if (Model.Title2 != null) { <p class="sell-card-text-2">@Model.Title2</p> }
+                    @if (Model.Title3 != null) { <p class="sell-card-text-3">@Model.Title3</p> }
+                    @if (Model.Title4 != null) { <p class="sell-card-text-4">@Model.Title4</p> }
+                    @if (Model.Button != null)
+                    {
+                        <a class="sell-card-text-5" asp-controller="product" asp-action="products" asp-route-id="@Model.Button.Url">@Model.Button.Content</a>
+                    }
+                </div>
+            </div>
+            @if (Model.GridItems.Count() > 1 && Model.GridItems.ElementAt(1) != null)
+            {
+                <partial name="../Components/_ProductTileXl.cshtml" model="@Model.GridItems.ElementAt(1)" />
+            }
+@*            @if (Model.GridItems.Count() >= 3)
+            {
+                @for (int i = 2; i < Model.GridItems.Count(); i++) 
+                {
+                    <partial name="../Components/_ProductTileXl.cshtml" model="@Model.GridItems.Skip(2)" />
+                }
+            }*@
+        </div>
+    </div>
+</section>
+}

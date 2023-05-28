@@ -1,0 +1,35 @@
+﻿@model CollectionsViewModel
+
+
+@if (Model.GridItems != null)
+{
+    @if (Model.Categories != null && Model.Categories.Any())
+    {
+        <div class="d-flex justify-content-center mt-5">
+            @foreach (var category in Model.Categories)
+            {
+                <a class="collection-link" asp-controller="Product" asp-action="Products" asp-route-category="@category.Name">@category.Name</a>
+            }
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Title))
+    {
+        <h3 class="collection-title">@Model.Title</h3>
+    }
+
+        <div class="row row-cols-md-1 row-cols-lg-3 row-cols-xl-4 g-3">
+            @foreach (var item in Model.GridItems)
+            {
+                <partial name="/Views/Shared/Partials/Components/_ProductTile.cshtml" model="item" />
+            }
+        </div>
+    
+
+    @if (Model.LoadMore)
+    {
+        <a class="loadmore-btn">
+            Load More   <i class="fa-solid fa-arrow-rotate-left"></i>
+        </a>
+    }
+}

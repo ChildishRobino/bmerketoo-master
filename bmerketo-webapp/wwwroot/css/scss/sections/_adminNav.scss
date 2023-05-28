@@ -1,0 +1,34 @@
+﻿.admin-nav {
+    position: fixed;
+    z-index: 2;
+    left: 0px;
+    height: 100%;
+    width: 180px;
+    background-color: #292929;
+    display: flex;
+    justify-content: center;
+
+    .admin-nav-body {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .admin-nav-link {
+        margin-bottom: 2.2rem;
+
+        i {
+            color: white;
+            font-size: 16px;
+            padding: 15px;
+            border-radius: 2px;
+            background-color: #FA3150;
+            transition: transform 0.1s ease-in-out;
+            margin-right: 1rem;
+
+            &:hover {
+                transform: scale(1.15);
+            }
+        }
+    }
+}

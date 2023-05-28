@@ -1,0 +1,17 @@
+﻿@model HomeIndexViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<partial name="../Shared/Partials/Sections/_Landing.cshtml" model="@Model.Landing" />
+
+@if (Model.BestCollection != null)
+{
+    <div class="container-xxl">
+               <partial name="../Shared/Partials/Sections/_Collections.cshtml" model="@Model.BestCollection" /> 
+    </div>
+}
+<partial name="../Shared/Partials/Sections/_ProductTileGrid.cshtml" model="@Model.ProductTileGrid" />
+<partial name="../Shared/Partials/Sections/_ProductTileRow.cshtml" model="@Model.ProductTileRow" />
+<partial name="../Shared/Partials/Sections/_ProductTileRowXl.cshtml" model="@Model.ProductTileRowXl" />
+<partial name="../Shared/Partials/Sections/_MailSub.cshtml" />  

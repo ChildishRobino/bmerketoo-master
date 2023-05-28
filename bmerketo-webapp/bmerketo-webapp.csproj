@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>bmerketo_webapp</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Repositories\**" />
+    <Compile Remove="wwwroot\imgs\ProductsImgs\**" />
+    <Content Remove="Repositories\**" />
+    <Content Remove="wwwroot\imgs\ProductsImgs\**" />
+    <EmbeddedResource Remove="Repositories\**" />
+    <EmbeddedResource Remove="wwwroot\imgs\ProductsImgs\**" />
+    <None Remove="Repositories\**" />
+    <None Remove="wwwroot\imgs\ProductsImgs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\scss\components\_productTile.scss" />
+    <None Include="wwwroot\css\scss\core\_base.scss" />
+    <None Include="wwwroot\css\scss\core\_mixins.scss" />
+    <None Include="wwwroot\css\scss\core\_variables.scss" />
+    <None Include="wwwroot\css\scss\sections\_collections.scss" />
+    <None Include="wwwroot\css\scss\sections\_mailSub.scss" />
+    <None Include="wwwroot\css\scss\sections\_navbar.scss" />
+    <None Include="wwwroot\css\scss\sections\_productTileGrid.scss" />
+    <None Include="wwwroot\css\scss\sections\_wellcome.scss" />
+    <None Include="wwwroot\css\scss\views\_productDetail.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+	<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+		
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\imgs\products\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,24 @@
+﻿@model ProductsViewModel
+
+<div class="container-fluid">
+    @if (!string.IsNullOrEmpty(Model.Title))
+    {
+        <h3 class="all-products-title">@Model.Title</h3>
+    }
+    <div class="row row-cols-md-1 row-cols-lg-3 row-cols-xl-5 g-2">
+        @if (Model.Items != null) {
+            foreach(var product in Model.Items)
+            {
+                <partial name="/Views/Shared/Partials/Components/_ProductTile.cshtml" model="product" />
+            }
+        }
+    </div>
+</div>
+
+@if (Model.Button != null)
+{
+    <button class="loadmore-btn">
+        @Model.Button.Content<i class="fa-solid fa-arrow-rotate-left"></i>
+    </button>
+}
+

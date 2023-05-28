@@ -1,0 +1,63 @@
+﻿@model CreateProductFormModel
+ <partial name="/Views/Shared/Partials/Sections/_AdminNav.cshtml" />
+<section class="contact-form">
+    <div class="container">
+        <div class="title mb-4">Create Product</div>
+
+        <form method="POST" class="validate-form" enctype="multipart/form-data" asp-action="createproduct" novalidate>
+            <div asp-validation-summary="ModelOnly" class="error"></div>
+            <div class="form-group mb-4">
+                <label asp-for="Name"></label>
+                <span>*</span>
+                <input required minlength="2" asp-for="Name" type="text">
+                <span asp-validation-for="Name"></span>
+                <partial name="/Views/Shared/Partials/Components/_FormValidationIndicators.cshtml" />
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="Description"></label>
+                <textarea minlength="10" asp-for="Description" type="text"></textarea>
+                <span asp-validation-for="Description"></span>
+                <partial name="/Views/Shared/Partials/Components/_FormValidationIndicators.cshtml" />
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="Price"></label>
+                <span>*</span>
+                <input required pattern="^\d{1,3}(?:,\d{3})*(\.\d{1,2})?$" asp-for="Price" type="text">
+                <span asp-validation-for="Price"></span>
+                <partial name="/Views/Shared/Partials/Components/_FormValidationIndicators.cshtml" />
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="OldPrice"></label>
+                <input pattern="^\d{1,3}(?:,\d{3})*(\.\d{1,2})?$" asp-for="OldPrice" type="text">
+                <span asp-validation-for="OldPrice"></span>
+                <partial name="/Views/Shared/Partials/Components/_FormValidationIndicators.cshtml" />
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="CategoryId"></label>
+                <span>*</span>
+                <select required class="d-block" asp-for="CategoryId">
+                    @foreach(var category in await productCategoryService.GetAllAsync())
+                    {
+                        <option value="@category.Value">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId"></span>
+            </div>
+            <div class="mb-4">
+                @foreach(SelectListItem tag in ViewBag.Tags)
+                {
+                    <div class="mb-1">
+                        <input type="checkbox" value="@tag.Value" checked="@tag.Selected" name="Tags" id="product-tags-@tag.Value">
+                        <label for="product-tags-@tag.Value" class="small form-check-label no-select">@tag.Text</label>
+                    </div>
+                }
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="Image"></label>
+                <input asp-for="Image">
+                <span asp-validation-for="Image"></span>
+            </div>
+            <button type="submit" class="btn-theme">Submit</button>
+        </form>
+    </div>
+</section>
